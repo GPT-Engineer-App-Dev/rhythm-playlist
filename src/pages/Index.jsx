@@ -1,17 +1,24 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
-
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+import { Container, Text, VStack, Box, Heading, Button, Image } from "@chakra-ui/react";
+import { useState } from "react";
 
 const Index = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
+        <Heading as="h1" size="2xl" mb={4}>Welcome to MusicStream</Heading>
+        <Text fontSize="lg">Your favorite music, anytime, anywhere.</Text>
+        <Box boxSize="sm" mt={6}>
+          <Image src="/images/music-streaming.jpg" alt="Music Streaming" />
+        </Box>
+        <Button onClick={handlePlayPause} colorScheme="teal" size="lg" mt={6}>
+          {isPlaying ? "Pause" : "Play"}
+        </Button>
       </VStack>
     </Container>
   );
